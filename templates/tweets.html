@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+{%include "search_nav.html"%}
+<div class="container" style="padding-top:20px;">
+<p style="color:black;">Search results for '{{ c }}' </p>
+    <div>
+       <div>
+           {% for s in tweets1 %}
+            <div class="card card-block" style="background-color:#e1e1e1;">
+                <h4 class="card-title"> {{ s['name'] }} </h4>
+                <p class="card-text"> {{ s['tweet'] }} </p>
+            </div>
+            {% endfor %}
+       </div>
+    </div>
+</div>
+{%endblock%}

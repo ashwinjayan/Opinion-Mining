@@ -1,0 +1,49 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+<div class="container">
+    <div style="padding-top:150px;">
+        <h3 class="text-xs-center">What the world thinks about..?</h3>
+    </div>
+    <br>
+    <div class="col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 center-block">
+        <div class="mx-auto">
+            <form action="/search_results/tweets" method="POST">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="searchkey" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-secondary" type="button" style="background-color:#0277d6;color:white;">
+                        <i class="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 text-xs-center">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+            <a href="#" class="link-text">Fork here</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.link-text {
+    font-size: 80%;
+    color: black;
+  }
+
+  .link-text:hover {
+    color: grey;
+    text-decoration: none;
+    -webkit-transition-duration: 500ms;
+    -moz-transition-duration: 500ms;
+  }
+</style>
+{%endblock%}

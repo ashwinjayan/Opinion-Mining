@@ -1,0 +1,69 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+{%include "search_nav.html"%}
+<div class="container" style="padding-top:20px;">
+    <p style="color:black;"> Charts and Sentiment Classification for '{{ c }}' </p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-block">
+                <div class="card-title text-xs-center">
+                    <h6> Critics Opinion </h6>
+                </div>
+                <div class="text-xs-center" id="example-caption-2">Positive&hellip; {{ p_blog }}%</div>
+                <progress class="progress progress-info" value="{{ p_blog }}" max="100" aria-describedby="example-caption-2"></progress>
+
+                <div class="text-xs-center" id="example-caption-3">Negative&hellip; {{ neg_blog }}%</div>
+                <progress class="progress progress-danger" value="{{ neg_blog }}" max="100" aria-describedby="example-caption-3"></progress>
+
+                <div class="text-xs-center" id="example-caption-4">Neutral&hellip; {{ neu_blog }}%</div>
+                <progress class="progress progress-warning" value="{{ neu_blog }}" max="100" aria-describedby="example-caption-4"></progress>
+            </div>
+            <div class="card card-block">
+                <div class="card-title text-xs-center">
+                    <h6> User Opinion </h6>
+                </div>
+                <div class="text-xs-center" id="example-caption-2">Positive&hellip; {{ p }}%</div>
+                <progress class="progress progress-info" value="{{ p }}" max="100" aria-describedby="example-caption-2"></progress>
+
+                <div class="text-xs-center" id="example-caption-3">Negative&hellip; {{ neg }}%</div>
+                <progress class="progress progress-danger" value="{{ neg }}" max="100" aria-describedby="example-caption-3"></progress>
+
+                <div class="text-xs-center" id="example-caption-4">Neutral&hellip; {{ neu }}%</div>
+                <progress class="progress progress-warning" value="{{ neu }}" max="100" aria-describedby="example-caption-4"></progress>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="piechart" class="center-block" style="width: 600px; height: 500px;"></div>
+        </div>
+    </div>
+</div>
+
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['POS', {{ p }}],
+          ['NEG', {{ neg }}],
+          ['NEU', {{ neu }}],]);
+
+        var options = {
+          title: 'User Opinion Pie Chart',
+          is3D: true,
+          chartArea: {width:'50%',height:'40%'},
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+ </script>
+
+{%endblock%}
