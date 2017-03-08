@@ -9,7 +9,7 @@
     <br>
     <div class="col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 center-block">
         <div class="mx-auto">
-            <form action="/search_results/tweets" method="POST">
+            <form name="myForm" action="/search_results/tweets" onsubmit="return checkInp()" method="POST">
                 <div class="input-group">
                   <input type="text" class="form-control" name="searchkey" placeholder="Search for...">
                   <span class="input-group-btn">

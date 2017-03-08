@@ -9,6 +9,16 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+      <script>
+      function checkInp() {
+        var x=document.forms["myForm"]["searchkey"].value;
+        var regex=/^^[0-9]+$/;
+        if (x.match(regex)) {
+            alert("Must not input numbers");
+            return false;
+        }
+      }
+      </script>
     </head>
     <body style="background-color:#fff;">
         {%block content%}
